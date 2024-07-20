@@ -1,7 +1,7 @@
 """Create config file for the project."""
 import markdown
 
-PORT = 80
+PORT = 8080
 DEBUG = False
 AUTO_RELOAD = True
 
