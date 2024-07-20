@@ -1,1 +1,1 @@
-web: gunicorn gettingstarted.wsgi
+web: pip install gunicorn && gunicorn gettingstarted.wsgi
