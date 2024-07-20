@@ -1,0 +1,68 @@
+<div class="row mt-4">
+  <div class="col">
+    <h1>
+      <svg
+        class="bi bi-filter-right"
+        xmlns="http://www.w3.org/2000/svg"
+        width="1em"
+        height="1em"
+        fill="currentColor"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="M14 10.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0 0 1h7a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0 0 1h11a.5.5 0 0 0 .5-.5z"
+        ></path></svg
+      >Daftar API
+    </h1>
+    <div class="table-responsive">
+      <table class="table table-striped table-hover table-bordered">
+        <thead>
+          <tr>
+            <th>API</th>
+            <th>Parameter</th>
+            <th>URL</th>
+            <th>Deskripsi</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for api in configs.API_SERVICES %}
+            <tr>
+              <td>{{ api.name }}</td>
+              <td>
+                {% for param in api.parameters %}
+                  (
+                  <span class="badge bg-primary">{{ param.name }}</span>
+                  <!-- type params -->
+                  {% if param.type == 'string' %}
+                    <span class="badge bg-secondary">string</span>
+                  {% endif %}
+                  {% if param.type == 'integer' %}
+                    <span class="badge bg-secondary">integer</span>
+                  {% endif %}
+                  {% if param.type == 'boolean' %}
+                    <span class="badge bg-secondary">boolean</span>
+                  {% endif %}
+                  {% if param.type == 'array' %}
+                    <span class="badge bg-secondary">array</span>
+                  {% endif %}
+                  {% if param.type == 'object' %}
+                    <span class="badge bg-secondary">object</span>
+                  {% endif %}
+                  <!-- if required -->
+                  {% if param.required %}
+                    <span class="badge bg-danger">required</span>
+                  {% else %}
+                    <span class="badge bg-success">optional</span>
+                  {% endif %}
+                  )
+                {% endfor %}
+              </td>
+              <td><a href="{{ api.url }}" class="badge bg-success" target="_blank">Try this</a></td>
+              <td>{{ api.description }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

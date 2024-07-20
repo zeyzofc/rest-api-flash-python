@@ -1,0 +1,6 @@
+flask
+flask-caching
+flask-cors
+bs4
+fake-useragent
+markdown

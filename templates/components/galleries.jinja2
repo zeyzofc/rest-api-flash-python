@@ -1,0 +1,43 @@
+<div class="row mt-4">
+  <div class="col">
+    <h1>
+      <svg
+        class="bi bi-images"
+        xmlns="http://www.w3.org/2000/svg"
+        width="1em"
+        height="1em"
+        fill="currentColor"
+        viewBox="0 0 16 16"
+      >
+        <path d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"></path>
+        <path
+          d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-1.998 2zM14 2H4a1 1 0 0 0-1 1h9.002a2 2 0 0 1 2 2v7A1 1 0 0 0 15 11V3a1 1 0 0 0-1-1zM2.002 4a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1h-10z"
+        ></path></svg
+      > Galery
+    </h1>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+      
+      {% for galery in configs.GALERIES %}
+      <div class="col mt-2">
+        <div class="card">
+          <img
+            class="card-img-top w-100 d-block"
+            loading="auto"
+            style="height: 200px; object-fit: cover; object-position: center; background-image: url('{{ galery.image }}');"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ galery.link.text }}</h5>
+            <p class="card-text">
+              {% if galery.description %}
+                {{ galery.description }}
+              {% endif %}
+            </p>
+            
+            <a name="" id="" class="btn btn-dark" href="{{ galery.link.href }}" target="_blank" role="button">See more</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
